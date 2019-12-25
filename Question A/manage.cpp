@@ -12,11 +12,18 @@ void Date::PrintDate()
     cout << year << "," << month << "," << day << endl;
 }
 
-Product::Product(string n, string s, float p, Date e)
-    : expirationDate(e)
+int Date::GetYear() { return year; }
+int Date::GetMonth() { return month; }
+int Date::GetDay() { return day; }
+
+Product::Product(string n, string s, float p, int a, int e, int b = 0) //批次数量默认为0
 {
+    batchNum = 0;
     name = n;
     sort = s;
+    amount = a;
+    batchNum = b;
+    expirationDate = e;
     head = new batch;
     head->next = NULL;
     price = p;
@@ -24,6 +31,7 @@ Product::Product(string n, string s, float p, Date e)
 
 void Product::AddBatch(Date e, int a)
 {
+    batchNum++;
     amount = amount + a;
     batch* p = head;
     while (!p->next)
@@ -48,7 +56,27 @@ void Product::Removal(int a)
         head->next = p->next;
         delete p;
         p = head->next;
+        batchNum--;
     }
     //当前批次足够出库数量
     p->amount -= a;
 }
+
+void Product::SaveProduct(ofstream& save)
+{
+    //将该商品的所有信息输出到文件
+    save << name << ' ' << sort << ' ' << price << ' '
+         << amount << ' ' << expirationDate << ' ' << batchNum << ' ';
+    batch* p = head;
+    while (p->next != NULL) {
+        p = p->next;
+        save << p->birthDate.GetYear() << ' ' << p->birthDate.GetMonth() << ' ' << p->birthDate.GetDay() << ' '
+             << p->amount << ' ';
+    }
+    save << p->birthDate.GetYear() << ' ' << p->birthDate.GetMonth() << ' ' << p->birthDate.GetDay() << ' '
+         << p->amount << ' ';
+    return;
+}
+
+string Product::GetName() { return name; }
+string Product::GetSort() { return sort; }

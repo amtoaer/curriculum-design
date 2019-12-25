@@ -5,11 +5,10 @@
 <img src="./Portrait/circle_portrait_2.png" width="96">
 <img src="./Portrait/circle_portrait_3.png" width="96">
 </p>
-
 <p align="center">
 <img src="https://img.shields.io/badge/language-c++-blue.svg?longCache=true&style=for-the-badge">
 <img src="https://img.shields.io/badge/license-MIT-orange.svg?longCache=true&style=for-the-badge">
-<img src="https://img.shields.io/badge/status-day_1-red.svg?longCache=true&style=for-the-badge">
+<img src="https://img.shields.io/badge/status-day_2-red.svg?longCache=true&style=for-the-badge">
 </p>
 
 ## `Question A`
