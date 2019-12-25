@@ -12,7 +12,7 @@ private:
     int day;
 
 public:
-    void InitDate(int, int, int);
+    Date(int, int, int);
     void PrintDate();
 };
 
@@ -31,7 +31,7 @@ private:
     float price; //商品价格
     Date expirationDate; //商品保质期
 public:
-    void InitProduct(string, string, float, Date); //商品名、类别、价格、保质期（创建）
+    Product(string, string, float, Date); //商品名、类别、价格、保质期（创建）
     void AddBatch(Date, int); //生产日期和数量（入库）
     void Removal(int); //移除特定数量的商品（出库）
     void PrintProduct(); //输出当前商品的详细信息
