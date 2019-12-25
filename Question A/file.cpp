@@ -1,4 +1,4 @@
-#include "header.h"
+#include "header.hpp"
 
 /* 商品文件保存｜读取路径，可自行修改 */
 string path = "/home/jeasonlau/.shop";
