@@ -1,5 +1,11 @@
 <h1 align="center">- 数据结构课程设计 -</h1>
-<h4 align="center">2019秋东北大学数据结构课程设计</h4>
+<h3 align="center">2019秋东北大学数据结构课程设计</h4>
+<p align="center">
+<img src="./Portrait/circle_portrait_1.png" width="96">
+<img src="./Portrait/circle_portrait_2.png" width="96">
+<img src="./Portrait/circle_portrait_3.png" width="96">
+</p>
+
 <p align="center">
 <img src="https://img.shields.io/badge/language-c++-blue.svg?longCache=true&style=for-the-badge">
 <img src="https://img.shields.io/badge/license-MIT-orange.svg?longCache=true&style=for-the-badge">
