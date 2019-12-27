@@ -1,12 +1,21 @@
-#include "header.hpp"
+#include "mainwindow.h"
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QLegend>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QValueAxis>
 
-int main()
+using namespace QtCharts;
+
+int main(int argc, char *argv[])
 {
-    BSTree root;
-    int data;
-    while (cin >> data) {
-        root = AddData(root, data);
-    }
-    InOrderTraversal(root);
-    return 0;
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.setWindowTitle("统计图");//设置程序标题框
+    w.setChart(w.initChart());//显示空统计图
+    w.show();
+    return a.exec();
 }
