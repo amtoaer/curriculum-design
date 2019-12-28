@@ -14,8 +14,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    w.setWindowTitle("统计图");//设置程序标题框
-    w.setChart(w.initChart());//显示空统计图
+    w.setWindowTitle("学生成绩统计图");//设置程序标题框
     w.show();
     return a.exec();
 }

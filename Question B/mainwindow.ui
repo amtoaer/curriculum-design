@@ -14,17 +14,14 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout" rowstretch="5,1">
+   <layout class="QGridLayout" name="gridLayout" rowstretch="6,1,1">
     <property name="sizeConstraint">
      <enum>QLayout::SetDefaultConstraint</enum>
     </property>
     <property name="spacing">
      <number>6</number>
     </property>
-    <item row="0" column="0">
-     <widget class="QChartView" name="graphicsView"/>
-    </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout" stretch="5,0">
       <item>
        <widget class="QTextEdit" name="textEdit"/>
@@ -39,6 +36,27 @@
         </property>
         <property name="text">
          <string>插入</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <widget class="QChartView" name="graphicsView"/>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="text">
+         <string>简易视图</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton">
+        <property name="text">
+         <string>详细视图</string>
         </property>
        </widget>
       </item>
