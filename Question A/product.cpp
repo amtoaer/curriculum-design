@@ -1,6 +1,6 @@
 #include "product.h"
 
-product::product(QString nam, QString sor, float pric, int amoun, int exp, int batchnu=0)
+product::product(QString nam, QString sor, double pric, int exp,int amoun=0,int batchnu=0)//创建时数量和批次为空
 {
     name=nam;
     sort=sor;
@@ -12,17 +12,15 @@ product::product(QString nam, QString sor, float pric, int amoun, int exp, int b
     head->next=nullptr;//空指针
 }
 
-void product::ChangeProduct(QString nam,QString sor,float pric,int amoun,int exp,int batchnu)
+void product::ChangeProduct(QString nam,QString sor,double pric,int exp)//除了数量都可供修改
 {
     name=nam;
     sort=sor;
     price=pric;
-    amount=amoun;
     expirationDate=exp;
-    batchNum=batchnu;
 }
 
-void product::AddBatch(QDate date, int amount)
+void product::AddBatch(QDate date, int amount)//增加批次
 {
     batch* p =head;
     while(p->next!=nullptr){
