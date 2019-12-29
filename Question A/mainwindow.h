@@ -11,7 +11,7 @@
 using namespace std;
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class MainWindow;}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -19,7 +19,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    friend class CreateProduct;
+    QVector<product> shop;
+    friend class operateproduct;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QStandardItemModel* getFirstModel();
@@ -38,8 +39,15 @@ private slots:
 
     void on_search_clicked();
 
+    void on_create_clicked();
+
+    void on_change_clicked();
+
+    void on_in_clicked();
+
+    void on_out_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QVector<product> shop;
 };
 #endif // MAINWINDOW_H

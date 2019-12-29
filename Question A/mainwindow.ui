@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>768</width>
+    <width>830</width>
     <height>610</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,5">
     <item row="1" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,1,2">
       <item>
        <widget class="QLineEdit" name="searchContent"/>
       </item>
@@ -24,6 +24,19 @@
        <widget class="QPushButton" name="search">
         <property name="text">
          <string>查询</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="stat">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>统计</string>
         </property>
        </widget>
       </item>
@@ -88,9 +101,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="statist">
+         <widget class="QPushButton" name="change">
           <property name="text">
-           <string>商品统计</string>
+           <string>修改商品</string>
           </property>
          </widget>
         </item>
@@ -112,7 +125,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>768</width>
+     <width>830</width>
      <height>23</height>
     </rect>
    </property>
