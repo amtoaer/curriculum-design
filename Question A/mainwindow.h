@@ -47,6 +47,8 @@ private slots:
 
     void on_out_clicked();
 
+    void on_stat_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

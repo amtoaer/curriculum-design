@@ -267,3 +267,26 @@ void MainWindow::on_out_clicked()
         FirstTableSet(getFirstModel());//刷新first table
     }
 }
+
+void MainWindow::on_stat_clicked()
+{
+    if (!shop.size()){
+        QMessageBox::information(nullptr,"统计错误","当前不存在数据！");
+        return;
+    }
+    QMap <QString,int> t;
+    QString info="当前商品类别信息：\n";
+    for (int i=0;i<shop.size();i++){
+        if (t.find(shop[i].sort)!=t.end()){
+            t[shop[i].sort]++;
+        }else{
+            t[shop[i].sort]=1;
+        }
+    }
+    QMap <QString,int>::iterator a=t.begin();
+    while(a!=t.end()){
+        info+=a.key()+":"+QString::number(a.value())+'\n';
+        a++;
+    }
+    QMessageBox::information(nullptr,"商品信息",info);
+}
