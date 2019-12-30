@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->radioButton->setChecked(true);
     //给第一个table设置只允许单行选中且无法编辑
     ui->firstTableView->verticalHeader()->hide();//隐藏行号
     ui->firstTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -83,11 +84,17 @@ QStandardItemModel* MainWindow::getSearchResult(QStandardItemModel * base, QStri
     QString label="编号,商品名,类别,库存,价格,保质期";
     QStringList labels=label.split(',');
     result->setHorizontalHeaderLabels(labels);//result设置label
-    auto items=base->findItems(toSearch,Qt::MatchContains,1);//模糊查找商品名
-    for (int i=0;i<items.size();i++){
-        int t = items[i]->index().row();//获取该行行号
-        result->appendRow(base->takeRow(t));//在结果中插入该行内容
+    int searchmode;
+    if (ui->radioButton->isChecked()){
+        searchmode=1;
+    }else{
+        searchmode=2;
     }
+    auto items=base->findItems(toSearch,Qt::MatchContains,searchmode);//模糊查找商品名
+    for (int i=0;i<items.size();i++){
+        int row=items[i]->index().row();
+        result->appendRow(base->takeRow(row));
+}
     return result;
 }
 
@@ -227,7 +234,7 @@ void MainWindow::on_create_clicked()
 void MainWindow::on_change_clicked()
 {
     if (!shop.size()){
-        QMessageBox::information(nullptr,"修改失败","当前无已选中数据！");
+        QMessageBox::information(nullptr,"修改失败","当前无已选中商品！");
         return;
     }
     operateProduct change(this);
@@ -246,7 +253,7 @@ void MainWindow::on_change_clicked()
 void MainWindow::on_in_clicked()//商品入库
 {
     if (!shop.size()){
-        QMessageBox::information(nullptr,"入库失败","当前无已选中数据！");
+        QMessageBox::information(nullptr,"入库失败","当前无已选中商品！");
         return;
     }
     in batchadd(this);
@@ -265,7 +272,7 @@ void MainWindow::on_in_clicked()//商品入库
 void MainWindow::on_out_clicked()//商品出库
 {
     if (!shop.size()){
-        QMessageBox::information(nullptr,"出库失败","当前无已选中数据！");
+        QMessageBox::information(nullptr,"出库失败","当前无已选中商品！");
         return;
     }
     bool result;

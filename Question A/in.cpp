@@ -1,11 +1,13 @@
 #include "in.h"
 #include "ui_in.h"
+#include <QIntValidator>
 
 in::in(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::in)
 {
     ui->setupUi(this);
+    ui->amount->setValidator(new QIntValidator(nullptr));//设置只能输入int
 }
 
 in::~in()
