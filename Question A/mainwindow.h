@@ -28,7 +28,7 @@ public:
     QStandardItemModel* getSearchResult(QStandardItemModel*,QString);//基于第一个model进行查找构造查找结果
     void FirstTableSet(QStandardItemModel*);
     void SecondTableSet(QStandardItemModel*);
-    void ReadFromFile();
+    void ReadFromFile(QString path);
     void WriteInFile();
 private slots:
     void on_firstTableView_clicked(const QModelIndex &index);
@@ -48,6 +48,8 @@ private slots:
     void on_out_clicked();
 
     void on_stat_clicked();
+
+    void on_random_clicked();
 
 private:
     Ui::MainWindow *ui;

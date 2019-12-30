@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,5">
     <item row="1" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,1,2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,1,1,1">
       <item>
        <widget class="QLineEdit" name="searchContent"/>
       </item>
@@ -37,6 +37,13 @@
         </property>
         <property name="text">
          <string>统计</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="random">
+        <property name="text">
+         <string>随机数据</string>
         </property>
        </widget>
       </item>

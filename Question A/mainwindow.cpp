@@ -96,11 +96,10 @@ void MainWindow::on_firstTableView_clicked(const QModelIndex &index)
     SecondTableSet(getSecondModel(index));//基于第一个表中被选中的编号显示第二个表中的内容
 }
 
-void MainWindow::ReadFromFile()
+void MainWindow::ReadFromFile(QString path)//将path作为参数传入，便于随机输入复用
 {
     /*读取顺序为：商品名，类别，价格，库存，保质期，批次数，批次
      * 批次读取顺序为：年/月/日/库存 */
-    QString path= "/home/jeasonlau/tttt";//路径需要自己手动修改（预计添加目录选择功能）
     QFile read(path);
     if (!read.exists()){
         QMessageBox* warning=new QMessageBox();
@@ -142,12 +141,13 @@ void MainWindow::ReadFromFile()
     msgbox->setText("已成功导入数据!");
     msgbox->show();
     read.close();
-    FirstTableSet(getFirstModel());
+    if (shop.size())
+        FirstTableSet(getFirstModel());
 }
 
 void MainWindow::WriteInFile()//导出文件
 {
-    QString path= "/home/jeasonlau/tttt";//路径需要自己手动修改（预计添加目录选择功能）
+    QString path= "/home/jeasonlau/File/archive";//路径需要自己手动修改
     QFile Write(path);
     if (Write.exists()){
         Write.remove();//删掉旧存档
@@ -192,7 +192,7 @@ void MainWindow::on_importFrom_clicked()
             QMessageBox::Yes|QMessageBox::No,
             QMessageBox::Yes);
     if (t==QMessageBox::Yes)
-        ReadFromFile();
+        ReadFromFile("/home/jeasonlau/File/archive");
 }
 
 void MainWindow::on_exportTo_clicked()
@@ -226,6 +226,10 @@ void MainWindow::on_create_clicked()
 
 void MainWindow::on_change_clicked()
 {
+    if (!shop.size()){
+        QMessageBox::information(nullptr,"修改失败","当前无已选中数据！");
+        return;
+    }
     operateProduct change(this);
     change.setWindowTitle("修改商品");
     change.setFather(this);
@@ -241,6 +245,10 @@ void MainWindow::on_change_clicked()
 
 void MainWindow::on_in_clicked()//商品入库
 {
+    if (!shop.size()){
+        QMessageBox::information(nullptr,"入库失败","当前无已选中数据！");
+        return;
+    }
     in batchadd(this);
     batchadd.setWindowTitle("商品入库");
     batchadd.setFather(this);
@@ -254,8 +262,12 @@ void MainWindow::on_in_clicked()//商品入库
     }
 }
 
-void MainWindow::on_out_clicked()
+void MainWindow::on_out_clicked()//商品出库
 {
+    if (!shop.size()){
+        QMessageBox::information(nullptr,"出库失败","当前无已选中数据！");
+        return;
+    }
     bool result;
     auto position=ui->firstTableView->currentIndex();
     int max=position.model()->index(position.row(),3).data().toInt();
@@ -268,7 +280,7 @@ void MainWindow::on_out_clicked()
     }
 }
 
-void MainWindow::on_stat_clicked()
+void MainWindow::on_stat_clicked()//统计数据
 {
     if (!shop.size()){
         QMessageBox::information(nullptr,"统计错误","当前不存在数据！");
@@ -289,4 +301,16 @@ void MainWindow::on_stat_clicked()
         a++;
     }
     QMessageBox::information(nullptr,"商品信息",info);
+}
+
+void MainWindow::on_random_clicked()//点击随机输入
+{
+    QMessageBox::StandardButton t=QMessageBox::question(
+            nullptr,
+            "警告",
+            "随机输入将会覆盖现有内容，是否继续？",
+            QMessageBox::Yes|QMessageBox::No,
+            QMessageBox::Yes);
+    if (t==QMessageBox::Yes)
+        ReadFromFile("/home/jeasonlau/File/random");
 }

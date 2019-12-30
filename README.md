@@ -8,8 +8,9 @@
 <p align="center">
 <img src="https://img.shields.io/badge/language-c++-blue.svg?longCache=true&style=for-the-badge">
 <img src="https://img.shields.io/badge/license-MIT-orange.svg?longCache=true&style=for-the-badge">
-<img src="https://img.shields.io/badge/status-day_5-red.svg?longCache=true&style=for-the-badge">
+<img src="https://img.shields.io/badge/status-day_6-red.svg?longCache=true&style=for-the-badge">
 </p>
+
 
 
 ## `Question A`
