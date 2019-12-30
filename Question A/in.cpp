@@ -17,7 +17,11 @@ void in::batchIn(int position)
 {
     int year,month,day,amount;
     amount=ui->amount->text().toInt();
-    QStringList date=ui->birthdate->text().simplified().split('.');
+    QStringList date=ui->birthdate->text().simplified().split('/');
+    if (date.size()!=3){
+        QMessageBox::information(nullptr,"入库失败","请检查日期格式后重试！\n(正确格式为year/month/day)");
+        return;
+    }
     year=date.at(0).toInt();
     month=date.at(1).toInt();
     day=date.at(2).toInt();

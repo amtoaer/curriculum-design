@@ -2,7 +2,6 @@
 #define PRODUCT_H
 #include <QString>
 #include <QDate>
-#include <iostream>
 using namespace std;
 
 typedef struct batch {
@@ -15,6 +14,7 @@ class product
 {
 public:
     friend class MainWindow;//使窗口部件可以操作该类
+    friend class operateProduct;//在修改商品的时候获取原始数据
     product(QString, QString, double, int,int,int); //创建对象
     void AddBatch(QDate, int); //入库（为了与文件读取复用，删除了增加amount和batchnum的功能，之后实现槽要记得写！）
     void Removal(int); //移除特定数量的商品（出库）

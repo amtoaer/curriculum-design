@@ -36,6 +36,24 @@ void operateProduct::creat()
 
 void operateProduct::chang(int num)//参数为编号
 {
+    //获取原始数据
+    auto name=father->shop[num-1].name;
+    auto sort=father->shop[num-1].sort;
+    auto price=father->shop[num-1].price;
+    auto expdate=father->shop[num-1].expirationDate;
+    //表示如果留空则使用原始数据，即留空则不修改
+    if (ui->name->text().remove(' ')==""){
+        ui->name->setText(name);
+    }
+    if (ui->sort->text().remove(' ')==""){
+        ui->sort->setText(sort);
+    }
+    if (ui->price->text().remove(' ')==""){
+        ui->price->setText(QString::number(price));
+    }
+    if (ui->expdate->text().remove(' ')==""){
+        ui->expdate->setText(QString::number(expdate));
+    }
     father->shop[num-1].ChangeProduct(ui->name->text(),
                                     ui->sort->text(),
                                     ui->price->text().toDouble(),

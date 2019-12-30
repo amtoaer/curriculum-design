@@ -235,7 +235,7 @@ void MainWindow::on_change_clicked()
     change.setFather(this);
     auto position=ui->firstTableView->currentIndex();
     QString name=position.model()->index(position.row(),1).data().toString();//获取选中行的商品名
-    change.setInfoContent("你正在修改商品:"+name);
+    change.setInfoContent("注意:某项留空则表示不修改\n你正在修改商品:"+name);
     auto result=change.exec();
     if (result==QDialog::Accepted){
         change.chang(position.model()->index(position.row(),0).data().toInt());//将选中行的编号作为参数
