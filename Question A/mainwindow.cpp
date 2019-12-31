@@ -117,8 +117,13 @@ void MainWindow::ReadFromFile(QString path)//将path作为参数传入，便于�
     }
     //成功打开后
     read.open(QIODevice::ReadOnly);
-    shop.clear();
     QTextStream in(&read);
+    //以下检测存档文件是否为空，防止对空存档进行读入造成的各种问题
+    if (in.atEnd()){//如果打开即在末尾，说明文件为空
+        QMessageBox::information(nullptr,"读入错误","存档文件为空！");
+        return;
+    }
+    shop.clear();
     while(!in.atEnd()){
         QString content=in.readLine();
         if (content==""){//读到最后的换行符
