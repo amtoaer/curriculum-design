@@ -97,7 +97,7 @@ void MainWindow::on_pushButton_clicked()//点击按钮触发该函数
     QString text=ui->textEdit->toPlainText();//获取文本框数据
     text=text.simplified();//去除字符串前面、后面的空格，将字符串内部连续空格变为1个
     for (int i=0;i<text.length();i++){//遍历字符串
-        if (!((text[i]>='0'&&text[i]<='9')||text[i]==' '||text[i]=='-')){//如果有数字、空格和负号之外的字符
+        if (!((text[i]>='0'&&text[i]<='9')||text[i]==' ')){//如果有数字、空格之外的字符
             QMessageBox *msgBox=new QMessageBox();
             msgBox->setWindowTitle("输入错误");
             msgBox->setText("输入内容中含有非法字符，请检查后重新提交！");
